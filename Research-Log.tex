@@ -1,0 +1,69 @@
+\documentclass{project-log}
+\SetMaintainer{第一作者身份}{第一作者姓名}{单位} % 主要作者的id是main
+\CreateContributor{abc}{第二作者身份}{第二作者姓名}{单位} % 第一个变量是贡献者id，后面直接使用就可以标记是哪个人对应的内容
+\SetProjectTitle{标题}
+\SetProjectSubtitle{研究想法及科研日志}
+\SetProjectHeaderName{科研进展}
+\SetProjectSummary{文档简介} %文档介绍
+\SetInstitutionLogo{figures/mcod_logo.png} % 文档logo
+%\addbibresource{mybib.bib}% Set the bibliography file
+%====================================================================
+% 自定义命令
+\newcommand{\eq}[1]{\begin{equation} #1 \end{equation}}
+\newcommand{\eqa}[1]{\begin{equation}\bgin{aligned} #1 \end{aligned}\end{equation}}
+%====================================================================
+% Start the document
+\begin{document}
+%\pagestyle{plain}
+\MakeFrontPage%  Front page
+\setcounter{page}{1}%当前页为第一页
+\pagenumbering{Roman}
+\newpage
+%--------------------------------------------------------
+%\input{sec-2}
+%--------------------------------------------------------
+\newpage
+\section{样式展示}
+\setcounter{page}{1}%当前页为第一页
+\pagenumbering{arabic}
+\begin{Meeting}{会议日期}{main}%最后一个参数是作者id，用来标记这次会议是谁的想法
+这里是一次会议讨论内容的记录，主导者第一个作者，用mian来作为他的id。在这次讨论中有一个重要任务先要完成
+\hightodo{日期}{main}{这里是目前最优先要做的事情，这些事情都会被加入到最后的todo list 中 }
+\end{Meeting}
+
+\begin{Meeting}{会议日期}{abc}%最后一个参数是作者id，用来标记这次会议是谁的想法
+这里是一次会议讨论内容的记录，主导者第一个作者，用abc来作为他的id。这次讨论中有一个次要任务需要完成
+\lowtodo{日期}{abc}{这里是目前次优先要做的事情 ，这些事情都会被加入到最后的todo list 中}
+\end{Meeting}
+
+\begin{Note}{这是Note标题}
+这里可以一些重要的笔记进行整理。
+\end{Note}
+
+
+\begin{Think}{这里是think 模块}
+这个模块其实就是换了一个颜色，可以用来整理自己的一些想法。
+\end{Think}
+
+
+
+
+%----------------------------------------------------------------------------------------
+\newpage
+\appendix
+
+%% References (bibliography)
+%% Add the list of todos in the end
+\section{Todo list}
+\begin{Note}{}
+\centering 这里总结了在讨论中遗留的问题以及之后需要解决的问题。
+\end{Note}
+
+\AddListOfTodos
+%-----------------------------------------------------------------------------------------
+%参考文献
+\newpage
+\bibliography{mybib}%加入参考文献
+\bibliographystyle{unsrt}
+
+\end{document}
