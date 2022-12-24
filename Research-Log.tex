@@ -44,7 +44,38 @@
 \begin{Think}{这里是think 模块}
 这个模块其实就是换了一个颜色，可以用来整理自己的一些想法。
 \end{Think}
-
+\begin{itemize}
+	\item 加入python代码
+\end{itemize}
+\begin{python}
+	Hoff1 = zeros(ComplexF64,2 * N,2 * N)  # off-diagonal element
+	Hoff2 = zeros(ComplexF64,2 * N,2 * N)
+	for k2 in -tr:tr,j2 in -tr:tr,k1 in -tr:tr,j1 in -tr:tr
+	if k1 == k2 &&  j1 == j2
+	off1 = zeros(ComplexF64,N,N)
+	off1[(k1 + tr) * s + j1 + tr + 1,(k2 + tr) * s + j2 + tr + 1] = 1
+	Hoff1 +=  kron(off1,Tb)
+	off2 = zeros(ComplexF64,N,N)
+	off2[(k2 + tr) * s + j2 + tr + 1,(k1 + tr) * s + j1 + tr + 1] = 1
+	Hoff2 += kron(off2,Tb')
+	elseif k1 == k2 && j1  + 1 == j2
+	off1 = zeros(ComplexF64,N,N)
+	off1[(k1 + tr) * s + j1 + tr + 1,(k2 + tr) * s + j2 + tr + 1] = 1
+	Hoff1 += kron(off1,Ttr)
+	off2 = zeros(ComplexF64,N,N)
+	off2[(k2 + tr) * s + j2 + tr + 1,(k1 + tr) * s + j1 + tr + 1] = 1
+	Hoff2 += kron(off2,Ttr')
+	elseif k1 - 1 == k2 && j1 == j2
+	off1 = zeros(ComplexF64,N,N)
+	off1[(k1 + tr) * s + j1 + tr + 1,(k2 + tr) * s + j2 + tr + 1] = 1
+	Hoff1 += kron(off1,Ttl)
+	off2 = zeros(ComplexF64,N,N)
+	off2[(k2 + tr) * s + j2 + tr + 1,(k1 + tr) * s + j1 + tr + 1] = 1
+	Hoff2 += kron(off2,Ttl')
+	end
+	end
+	Hoff = kron([0 1;0 0],Hoff1) + kron([0 0;1 0],Hoff2)
+\end{python}
 
 
 

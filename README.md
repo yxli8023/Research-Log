@@ -29,6 +29,44 @@
 最后在文档最后面会生成一个**Todo List**，这里面就包含了前面使用**hightodo**和**lowtodo**来提醒自己需要做的事情，方便自己在整理科研日志的时候来提醒自己，同时也可以将一些想法高亮出来，说不定什么时候就可以有一些突破性的进展。
 ![png](https://github.com/yxli8023/Research-Log/blob/main/figures/demo-2.png)
 
+# 代码插入
+通过`python`环境块可以直接插入程序语言，而且其中每一行都会有编号。这里测试了一下，往里面写`Julia`语言也是可以的，其它语言没有进行测试
+
+![png](https://github.com/yxli8023/Research-Log/blob/main/figures/python.png)
+
+```latex
+\begin{python}
+	Hoff1 = zeros(ComplexF64,2 * N,2 * N)  # off-diagonal element
+	Hoff2 = zeros(ComplexF64,2 * N,2 * N)
+	for k2 in -tr:tr,j2 in -tr:tr,k1 in -tr:tr,j1 in -tr:tr
+	if k1 == k2 &&  j1 == j2
+	off1 = zeros(ComplexF64,N,N)
+	off1[(k1 + tr) * s + j1 + tr + 1,(k2 + tr) * s + j2 + tr + 1] = 1
+	Hoff1 +=  kron(off1,Tb)
+	off2 = zeros(ComplexF64,N,N)
+	off2[(k2 + tr) * s + j2 + tr + 1,(k1 + tr) * s + j1 + tr + 1] = 1
+	Hoff2 += kron(off2,Tb')
+	elseif k1 == k2 && j1  + 1 == j2
+	off1 = zeros(ComplexF64,N,N)
+	off1[(k1 + tr) * s + j1 + tr + 1,(k2 + tr) * s + j2 + tr + 1] = 1
+	Hoff1 += kron(off1,Ttr)
+	off2 = zeros(ComplexF64,N,N)
+	off2[(k2 + tr) * s + j2 + tr + 1,(k1 + tr) * s + j1 + tr + 1] = 1
+	Hoff2 += kron(off2,Ttr')
+	elseif k1 - 1 == k2 && j1 == j2
+	off1 = zeros(ComplexF64,N,N)
+	off1[(k1 + tr) * s + j1 + tr + 1,(k2 + tr) * s + j2 + tr + 1] = 1
+	Hoff1 += kron(off1,Ttl)
+	off2 = zeros(ComplexF64,N,N)
+	off2[(k2 + tr) * s + j2 + tr + 1,(k1 + tr) * s + j1 + tr + 1] = 1
+	Hoff2 += kron(off2,Ttl')
+	end
+	end
+	Hoff = kron([0 1;0 0],Hoff1) + kron([0 0;1 0],Hoff2)
+\end{python}
+```
+
+
 # 未待续完
 暂时这个模版满足了我的基本需求，还没有其他的想法可以加入到这个模版中，后面如果有新东西，我会继续更新。如果你在科研进程中有什么好的整理日志的方式，可以联系我，如果在我能力范围内，我会努力将这个功能加入到当前的模版中。
 

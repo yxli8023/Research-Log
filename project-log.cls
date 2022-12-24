@@ -29,6 +29,7 @@
 \RequirePackage{fancyhdr} % Allows for nice header and footer
 %\RequirePackage{sectsty} % Allows customizing section commands
 \RequirePackage{appendix} % Enables appendices
+\RequirePackage{pythonhighlight} % inser code for python
 %\RequirePackage{enumerate} % Custom numerate, useful for i,ii,iii... I,II,III...
 \RequirePackage[colorlinks = true,
 linkcolor = blue,
